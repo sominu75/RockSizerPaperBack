@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Bingo Game</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 추가 부분1 Start -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="./javascript_library/modalLayer.js"></script>
+  <script src="./javascript_library/System.js"></script>
+  <!-- 추가 부분1 End -->
+  <script>
+    //추가 부분2 Start
+    var p = new URLSearchParams(window.location.search);
+      console.log('this.$route:', window.location.origin);
+
+    console.log('link:' + p.campaign);
+        console.log('link:' + p);
+    var modal_layer = new ModalLayer();
+    $(document).ready(function() {
+      modal_layer.init('md_frame', 'md_bg', 720, 1280, 720, 1280, '/', '/', (new MySystem()).checkMobileDevice(), '#ededed', p.get('campaign'));
+      modal_layer.makeModal();
+    });
+    //추가 부분2 End
+
+    //게임 닫기
+    //pc esc
+    //modal_layer.closeGame();
+  </script>
+</head>
+
+<body>
+  <!-- 추가 부분3 Start -->
+  <!-- <a href="#" class="btn-example" onclick="modal_layer.makeModal()">클릭 Bingo Game 시작</a> -->
+  <div id="md_bg">
+    <iframe id="md_frame" scrolling="no" frameborder="no" allowfullscreen></iframe>
+  </div>
+  <!-- 추가 부분3 End -->
+</body>
+
+</html>
